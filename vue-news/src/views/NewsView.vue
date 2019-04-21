@@ -4,7 +4,7 @@
       <a :href="item.url">{{item.title}}</a>
       <small>
         <time>{{item.time_ago}}</time>
-        {{item.user}}
+        <router-link :to="`/user/${item.user}`">{{item.user}}</router-link>
       </small>
     </p>
   </div>
