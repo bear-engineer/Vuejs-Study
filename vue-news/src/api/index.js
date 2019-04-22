@@ -22,4 +22,8 @@ const fetchUserInfo = username => {
   return axios.get(`${config.baseUrl}user/${username}.json`);
 };
 
-export { fetchNewsList, fetchJobsList, fetchAskList, fetchUserInfo };
+const fetchItem = id => {
+  return axios.get(`${config.baseUrl}item/${id}.json`);
+};
+
+export { fetchNewsList, fetchJobsList, fetchAskList, fetchUserInfo, fetchItem };
