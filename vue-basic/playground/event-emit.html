@@ -8,31 +8,28 @@
   </head>
   <body>
     <div id="app">
-      <app-header :propsdata="message"></app-header>
-      <app-content :number="date"></app-content>
-      <input v-model="date" />
+      <app-header v-on:pass="logText"></app-header>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-
     <script>
       var appHeader = {
-        template: '<h1>header {{propsdata}}</h1>',
-        props: ['propsdata'],
-      };
-
-      var appContent = {
-        template: '<h2>{{number}}</h2>',
-        props: ['number'],
+        template: '<button v-on:click="passEvent">click</button>',
+        methods: {
+          passEvent: function() {
+            this.$emit('pass');
+          },
+        },
       };
       new Vue({
         el: '#app',
+        data: {},
         components: {
           'app-header': appHeader,
-          'app-content': appContent,
         },
-        data: {
-          message: 'hi',
-          date: 20190416,
+        methods: {
+          logText: function() {
+            console.log('text');
+          },
         },
       });
     </script>
