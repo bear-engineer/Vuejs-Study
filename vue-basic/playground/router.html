@@ -27,14 +27,17 @@
       };
 
       var router = new VueRouter({
+        mode: 'history',
         routes: [
           {
             path: '/login',
             component: LoginComponent,
+            name: 'login',
           },
           {
             path: '/main',
             component: MainComponent,
+            name: 'main',
           },
         ],
       });
