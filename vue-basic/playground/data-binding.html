@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <h1 :id="uuid" :class="name">{{ number }}</h1>
+      <p>{{ dubleNum }}</p>
+      <input v-model="number" />
+      <div v-if="loading">
+        ...loading...
+      </div>
+      <div v-else>
+        test user login
+      </div>
+      <button @click="login">login</button>
+
+      <div v-show="loading">
+        test
+      </div>
+      <h1>Data List</h1>
+      <div v-for="data in dataList">
+        <p>{{ data }}</p>
+      </div>
+      <input type="text" v-model="dataText" @keyup.enter="dataUpdate" />
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+      new Vue({
+        el: '#app',
+        data: {
+          number: 10,
+          uuid: 'ab1121',
+          name: 'text-blue',
+          loading: true,
+          dataList: [],
+          dataText: '',
+        },
+        computed: {
+          dubleNum: function() {
+            return this.number * 2;
+          },
+        },
+        methods: {
+          login: function() {
+            this.loading = !this.loading;
+          },
+          dataUpdate: function() {
+            this.dataList.push(this.dataText);
+            this.dataText = '';
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
