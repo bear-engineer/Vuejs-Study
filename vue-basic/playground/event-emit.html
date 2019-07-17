@@ -9,6 +9,11 @@
   <body>
     <div id="app">
       <app-header v-on:pass="logText"></app-header>
+      <app-content
+        v-on:add="addNumber"
+        v-on:dec="decNumber"
+        :number="number"
+      ></app-content>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script>
@@ -20,15 +25,38 @@
           },
         },
       };
+
+      var appContent = {
+        template:
+          '<div>{{number}}<button v-on:click="addNumber">add</button><button v-on:click="decNumber">dec</button></div>',
+        props: ['number'],
+        methods: {
+          addNumber: function() {
+            this.$emit('add');
+          },
+          decNumber: function() {
+            this.$emit('dec');
+          },
+        },
+      };
       new Vue({
         el: '#app',
-        data: {},
+        data: {
+          number: 10,
+        },
         components: {
           'app-header': appHeader,
+          'app-content': appContent,
         },
         methods: {
           logText: function() {
             console.log('text');
+          },
+          addNumber: function() {
+            this.number++;
+          },
+          decNumber: function() {
+            this.number--;
           },
         },
       });
