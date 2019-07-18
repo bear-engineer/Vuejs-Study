@@ -30,7 +30,7 @@ export default {
       item: state => state.item
     })
   },
-  created() {
+  beforeCreate() {
     const itemId = this.$route.params.id;
     this.$store.dispatch("FETCH_ITEM", itemId);
   }
