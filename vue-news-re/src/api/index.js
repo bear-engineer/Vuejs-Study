@@ -19,3 +19,7 @@ export const fetchAskList = () => {
 export const fetchUserInfo = id => {
   return axios.get(`${config.baseUrl}/user/${id}.json`);
 };
+
+export const fetchItem = id => {
+  return axios.get(`${config.baseUrl}/item/${id}.json`);
+};
